@@ -17,6 +17,6 @@ app.get("/", (req, res) => {
     res.send(JSON.stringify(ip));
 });
 
-app.listen(7777, (err) => {
-    console.log("Listening from port 7777");
+app.listen(80, (err) => {
+    console.log("Listening from port 80");
 });
