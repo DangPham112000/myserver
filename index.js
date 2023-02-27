@@ -17,7 +17,7 @@ app.get("/all", (req, res) => {
 });
 
 app.get("/:ts", (req, res) => {
-    console.log(req.params);
+    console.log(req.params.ts);
     var ip = {
         ip: req.ip,
         headers: req.headers["x-forwarded-for"],
@@ -25,7 +25,13 @@ app.get("/:ts", (req, res) => {
     };
     console.log(ip);
     res.send(
-        req.ip || req.headers["x-forwarded-for"] || req.socket.remoteAddress
+        JSON.stringify({
+            ip:
+                req.ip ||
+                req.headers["x-forwarded-for"] ||
+                req.socket.remoteAddress,
+            ts: req.params.ts,
+        })
     );
 });
 
